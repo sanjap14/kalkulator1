@@ -82,7 +82,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 }
                 else if (text.StartsWith("*("))
                 {
-                    realniDeo = realniDeo * Convert.ToInt16(matchRealni.Value) - imaginarniDeo * Convert.ToInt16(matchImaginarni.Value); //re* z.im + im * z.re;
+                    realniDeo = realniDeo * Convert.ToInt16(matchRealni.Value) - imaginarniDeo * Convert.ToInt16(matchImaginarni.Value); 
                 }
             }
             catch (System.FormatException) { }
@@ -100,7 +100,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 }
                 else if (text.StartsWith("*("))
                 {
-                    imaginarniDeo = realniDeoStari * Convert.ToInt16(matchImaginarni.Value) + imaginarniDeo * Convert.ToInt16(matchRealni.Value);   //(ad+bc) 
+                    imaginarniDeo = realniDeoStari * Convert.ToInt16(matchImaginarni.Value) + imaginarniDeo * Convert.ToInt16(matchRealni.Value);    
                 }
             }
             catch (System.FormatException)
