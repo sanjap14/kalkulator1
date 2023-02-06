@@ -26,23 +26,21 @@ namespace kalkulatori__rimski__imaginarni__veliki_
 
         }
 
-        public int imaginarniDeo, realniDeo, realniDeoStari;
-
         private void FormKompleksni_Load(object sender, EventArgs e)
         {
 
         }
 
-        public string text;
-        
+
+
         private void textBoxKompleksni_KeyUp_1(object sender, KeyEventArgs e)
-        {           
+        {
             if (e.KeyCode == Keys.I)
             {
                 RegexRealniImaginarni(textBoxKompleksni.Text);
-                textBoxKompleksni.Text += ')';                
+                textBoxKompleksni.Text += ')';
                 CursorNaKraj();
-                MessageBox.Show(realniDeo.ToString() + "\n" + imaginarniDeo.ToString());      
+                MessageBox.Show(realniDeo.ToString() + "\n" + imaginarniDeo.ToString());
             }
             if (e.KeyCode == Keys.OemMinus && (textBoxKompleksni.Text.EndsWith("i)-")))
             {
@@ -71,7 +69,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
             try
             {
                 if (text.StartsWith("+(") || text.StartsWith("("))
-                    {
+                {
                     realniDeo += Convert.ToInt16(matchRealni.Value);
                     realniDeoStari += Convert.ToInt16(matchRealni.Value);
                 }
@@ -82,10 +80,13 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 }
                 else if (text.StartsWith("*("))
                 {
-                    realniDeo = realniDeo * Convert.ToInt16(matchRealni.Value) - imaginarniDeo * Convert.ToInt16(matchImaginarni.Value); 
+                    realniDeo = realniDeo * Convert.ToInt16(matchRealni.Value) - imaginarniDeo * Convert.ToInt16(matchImaginarni.Value);
                 }
             }
-            catch (System.FormatException) { }
+            catch (System.FormatException) 
+            {
+                realniDeo = 0;
+            }
 
             //imaginarni
             try
@@ -100,16 +101,32 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 }
                 else if (text.StartsWith("*("))
                 {
-                    imaginarniDeo = realniDeoStari * Convert.ToInt16(matchImaginarni.Value) + imaginarniDeo * Convert.ToInt16(matchRealni.Value);    
+                    imaginarniDeo = realniDeoStari * Convert.ToInt16(matchImaginarni.Value) + imaginarniDeo * Convert.ToInt16(matchRealni.Value);
                 }
             }
             catch (System.FormatException)
             {
-                if (text.EndsWith("-i"))
+                if (text.EndsWith("-i") && text.StartsWith("-("))
+                {
+                    imaginarniDeo += 1;
+                }
+                else if (text.EndsWith("-i") && text.StartsWith("+("))
                 {
                     imaginarniDeo -= 1;
                 }
-                else
+                else if (text.EndsWith("+i") && text.StartsWith("-("))
+                {
+                    imaginarniDeo -= 1;
+                }
+                else if (text.EndsWith("+i") && text.StartsWith("+("))  //ovde napisi i slucajeve bez plusa +i=i
+                {
+                    imaginarniDeo += 1;
+                }
+                else if (text.EndsWith("-i"))
+                {
+                    imaginarniDeo -= 1;
+                }
+                else if (text.EndsWith("+i"))
                 {
                     imaginarniDeo += 1;
                 }
@@ -143,6 +160,6 @@ namespace kalkulatori__rimski__imaginarni__veliki_
         {
 
         }
-
+        public int imaginarniDeo, realniDeo, realniDeoStari;
     }
 }
