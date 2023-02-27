@@ -17,7 +17,8 @@ namespace kalkulatori__rimski__imaginarni__veliki_
             InitializeComponent();
         }
 
-        static List<int>[] IstiNapred(List<int> A, List<int> B)
+        static List<int>[] IstiNapred(List<int> A,
+                                      List<int> B)
         {
             int n = A.Count;
             int m = B.Count;
@@ -41,6 +42,8 @@ namespace kalkulatori__rimski__imaginarni__veliki_
             return new[] { A, B };
         }
 
+        // Function to make Integral part
+        // with equal digits
         static List<int>[] IstiNazad(List<int> A,
                                            List<int> B)
         {
@@ -68,6 +71,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
 
         static string Zbir(string s1, string s2)
         {
+
             int i;
 
             List<int> Celi1 = new List<int>();
@@ -75,56 +79,44 @@ namespace kalkulatori__rimski__imaginarni__veliki_
             List<int> Deci1 = new List<int>();
             List<int> Deci2 = new List<int>();
 
-            int s1decIndex = s1.IndexOf('.');
-            if (s1decIndex != -1)
+            for (i = s1.Length - 1; i > -1; i--)
             {
-                for (i = s1decIndex - 1; i > -1; i--)
-                {
-                    Deci1.Add(s1[i] - '0');
-                }
 
-                i--;
-                for (; i > -1; i--)
+                if (s1[i] == '.')
                 {
-                    Celi1.Add(s1[i] - '0');
+                    break;
                 }
-            }
-            else
-            {
-                for (i = s1.Length - 1; i > -1; i--)
-                {
-                    Celi1.Add(s1[i] - '0');
-                }
+                Deci1.Add(s1[i] - '0');
             }
 
-            int s2decIndex = s2.IndexOf('.');
-            if (s2decIndex != -1)
+            i--;
+            for (; i > -1; i--)
             {
-                for (i = s2decIndex - 1; i > -1; i--)
-                {
-                    Deci2.Add(s2[i] - '0');
-                }
-
-                i--;
-                for (; i > -1; i--)
-                {
-                    Celi2.Add(s2[i] - '0');
-                }
-            }
-            else
-            {
-                for (i = s2.Length - 1; i > -1; i--)
-                {
-                    Celi2.Add(s2[i] - '0');
-                }
+                Celi1.Add(s1[i] - '0');
             }
 
-            List<int>[] rez1 = IstiNapred(Deci1, Deci2);
-            List<int>[] rez2 = IstiNazad(Celi1, Celi2);
-            Deci1 = rez1[0];
-            Deci2 = rez1[1];
-            Celi1 = rez2[0];
-            Celi2 = rez2[1];
+            for (i = s2.Length - 1; i > -1; i--)
+            {
+
+                if (s2[i] == '.')
+                {
+                    break;
+                }
+                Deci2.Add(s2[i] - '0');
+            }
+
+            i--;
+            for (; i > -1; i--)
+            {
+                Celi2.Add(s2[i] - '0');
+            }
+
+            List<int>[] res1 = IstiNapred(Deci1, Deci2);
+            List<int>[] res2 = IstiNazad(Celi1, Celi2);
+            Deci1 = res1[0];
+            Deci2 = res1[1];
+            Celi1 = res2[0];
+            Celi2 = res2[1];
 
             int n = Deci1.Count;
             int m = Deci2.Count;
@@ -133,6 +125,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
 
             while (i < n && i < m)
             {
+
                 int sum = Deci1[i] + Deci2[i] + ostatak;
 
                 Deci1[i] = sum % 10;
@@ -143,6 +136,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
             int N = Celi1.Count;
             int M = Celi2.Count;
             i = 0;
+
 
             while (i < N && i < M)
             {
@@ -160,18 +154,12 @@ namespace kalkulatori__rimski__imaginarni__veliki_
 
             string celi = string.Join(string.Empty, Celi1);
             string decimalni = string.Join(string.Empty, Deci1);
-            if (decimalni.Length > 0)
-            {
-                return celi + '.' + decimalni;
-            }
-            else
-            {
-                return celi;
-            }
+            return celi + '.' + decimalni;
         }
 
         static string Razlika(string s1, string s2)
         {
+
             int i;
 
             List<int> Celi1 = new List<int>();
@@ -181,25 +169,67 @@ namespace kalkulatori__rimski__imaginarni__veliki_
 
             for (i = s1.Length - 1; i > -1; i--)
             {
+
+                if (s1[i] == '.')
+                {
+                    break;
+                }
+                Deci1.Add(s1[i] - '0');
+            }
+
+            i--;
+            for (; i > -1; i--)
+            {
                 Celi1.Add(s1[i] - '0');
             }
 
             for (i = s2.Length - 1; i > -1; i--)
             {
+
+                if (s2[i] == '.')
+                {
+                    break;
+                }
+                Deci2.Add(s2[i] - '0');
+            }
+
+            i--;
+            for (; i > -1; i--)
+            {
                 Celi2.Add(s2[i] - '0');
             }
 
-            List<int>[] rez1 = IstiNapred(Deci1, Deci2);
-            List<int>[] rez2 = IstiNazad(Celi1, Celi2);
-            Deci1 = rez1[0];
-            Deci2 = rez1[1];
-            Celi1 = rez2[0];
-            Celi2 = rez2[1];
+            List<int>[] res1 = IstiNapred(Deci1, Deci2);
+            List<int>[] res2 = IstiNazad(Celi1, Celi2);
+            Deci1 = res1[0];
+            Deci2 = res1[1];
+            Celi1 = res2[0];
+            Celi2 = res2[1];
+
+            int n = Deci1.Count;
+            int m = Deci2.Count;
+            i = 0;
+            int ostatak = 0;
+
+            while (i < n && i < m)
+            {
+                if ((Deci1[i] - Deci2[i] + ostatak) < 0)
+                {
+                    Deci1[i] = 10 + (Deci1[i] - Deci2[i] + ostatak);
+                    ostatak = -1;
+                }
+                else
+                {
+                    Deci1[i] = (Deci1[i] - Deci2[i]) + ostatak;
+                    ostatak = 0;
+                }
+                i++;
+            }
 
             int N = Celi1.Count;
             int M = Celi2.Count;
             i = 0;
-            int ostatak = 0;
+            
 
             while (i < N && i < M)
             {
@@ -211,11 +241,21 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 else
                 {
                     Celi1[i] = (Celi1[i] - Celi2[i]) + ostatak;
+                    ostatak = 0;
                 }
                 i++;
             }
+
+            //prenesi ostatak
+            //if (ostatak != 0)
+            //    Celi1.Add(ostatak);
+
             Celi1.Reverse();
-            return string.Join(string.Empty, Celi1);
+            Deci1.Reverse();
+
+            string celi = string.Join(string.Empty, Celi1);
+            string decimalni = string.Join(string.Empty, Deci1);
+            return celi + '.' + decimalni;
         }
 
         private void buttonPlus_Click(object sender, EventArgs e)
