@@ -30,6 +30,7 @@
         {
             this.buttonRimski = new System.Windows.Forms.Button();
             this.buttonKompleksni = new System.Windows.Forms.Button();
+            this.buttonVeliki = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonRimski
@@ -52,11 +53,22 @@
             this.buttonKompleksni.UseVisualStyleBackColor = true;
             this.buttonKompleksni.Click += new System.EventHandler(this.buttonKompleksni_Click);
             // 
+            // buttonVeliki
+            // 
+            this.buttonVeliki.Location = new System.Drawing.Point(490, 188);
+            this.buttonVeliki.Name = "buttonVeliki";
+            this.buttonVeliki.Size = new System.Drawing.Size(126, 37);
+            this.buttonVeliki.TabIndex = 2;
+            this.buttonVeliki.Text = "Veliki";
+            this.buttonVeliki.UseVisualStyleBackColor = true;
+            this.buttonVeliki.Click += new System.EventHandler(this.buttonVeliki_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonVeliki);
             this.Controls.Add(this.buttonKompleksni);
             this.Controls.Add(this.buttonRimski);
             this.Name = "Form1";
@@ -69,6 +81,7 @@
 
         private System.Windows.Forms.Button buttonRimski;
         private System.Windows.Forms.Button buttonKompleksni;
+        private System.Windows.Forms.Button buttonVeliki;
     }
 }
 

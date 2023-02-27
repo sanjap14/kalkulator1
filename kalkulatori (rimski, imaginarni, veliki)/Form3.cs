@@ -15,18 +15,20 @@ namespace kalkulatori__rimski__imaginarni__veliki_
 {
     public partial class FormKompleksni : Form
     {
+        class Kompleksni
+        {
+            public int imaginarniDeo, realniDeo, realniDeoStari;
+        }
+        Kompleksni broj = new Kompleksni();
 
         public FormKompleksni()
         {
             InitializeComponent();
-            //text = textBoxKompleksni.Text;
         }
         private void FormKompleksni_KeyDown(object sender, KeyEventArgs e)
         {
 
         }
-
-        public int imaginarniDeo, realniDeo, realniDeoStari;
 
         private void FormKompleksni_Load(object sender, EventArgs e)
         {
@@ -42,7 +44,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 RegexRealniImaginarni(textBoxKompleksni.Text);
                 textBoxKompleksni.Text += ')';                
                 CursorNaKraj();
-                MessageBox.Show(realniDeo.ToString() + "\n" + imaginarniDeo.ToString());      
+                MessageBox.Show(broj.realniDeo.ToString() + "\n" + broj.imaginarniDeo.ToString());      
             }
             if (e.KeyCode == Keys.OemMinus && (textBoxKompleksni.Text.EndsWith("i)-")))
             {
@@ -72,17 +74,17 @@ namespace kalkulatori__rimski__imaginarni__veliki_
             {
                 if (text.StartsWith("+(") || text.StartsWith("("))
                     {
-                    realniDeo += Convert.ToInt16(matchRealni.Value);
-                    realniDeoStari += Convert.ToInt16(matchRealni.Value);
+                    broj.realniDeo += Convert.ToInt16(matchRealni.Value);
+                    broj.realniDeoStari += Convert.ToInt16(matchRealni.Value);
                 }
                 else if (text.StartsWith("-("))
                 {
-                    realniDeo -= Convert.ToInt16(matchRealni.Value);
-                    realniDeoStari += Convert.ToInt16(matchRealni.Value);
+                    broj.realniDeo -= Convert.ToInt16(matchRealni.Value);
+                    broj.realniDeoStari += Convert.ToInt16(matchRealni.Value);
                 }
                 else if (text.StartsWith("*("))
                 {
-                    realniDeo = realniDeo * Convert.ToInt16(matchRealni.Value) - imaginarniDeo * Convert.ToInt16(matchImaginarni.Value); 
+                    broj.realniDeo = broj.realniDeo * Convert.ToInt16(matchRealni.Value) - broj.imaginarniDeo * Convert.ToInt16(matchImaginarni.Value); 
                 }
             }
             catch (System.FormatException) { }
@@ -92,29 +94,29 @@ namespace kalkulatori__rimski__imaginarni__veliki_
             {
                 if (text.StartsWith("+(") || text.StartsWith("("))
                 {
-                    imaginarniDeo += Convert.ToInt16(matchImaginarni.Value);
+                    broj.imaginarniDeo += Convert.ToInt16(matchImaginarni.Value);
                 }
                 else if (text.StartsWith("-("))
                 {
-                    imaginarniDeo -= Convert.ToInt16(matchImaginarni.Value);
+                    broj.imaginarniDeo -= Convert.ToInt16(matchImaginarni.Value);
                 }
                 else if (text.StartsWith("*("))
                 {
-                    imaginarniDeo = realniDeoStari * Convert.ToInt16(matchImaginarni.Value) + imaginarniDeo * Convert.ToInt16(matchRealni.Value);    
+                    broj.imaginarniDeo = broj.realniDeoStari * Convert.ToInt16(matchImaginarni.Value) + broj.imaginarniDeo * Convert.ToInt16(matchRealni.Value);    
                 }
             }
             catch (System.FormatException)
             {
                 if (text.EndsWith("-i"))
                 {
-                    imaginarniDeo -= 1;
+                    broj.imaginarniDeo -= 1;
                 }
                 else
                 {
-                    imaginarniDeo += 1;
+                    broj.imaginarniDeo += 1;
                 }
             }
-            realniDeoStari = realniDeo;
+            broj.realniDeoStari = broj.realniDeo;
         }
 
         private void CursorNaKraj()

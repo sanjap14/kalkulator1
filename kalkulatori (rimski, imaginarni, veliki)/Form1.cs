@@ -14,7 +14,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
     {
         FormRimski formRimski = new FormRimski();
         FormKompleksni formKompleksni = new FormKompleksni();
-
+        FormVeliki formVeliki = new FormVeliki();
         public Form1()
         {
             InitializeComponent();
@@ -28,6 +28,11 @@ namespace kalkulatori__rimski__imaginarni__veliki_
         private void buttonKompleksni_Click(object sender, EventArgs e)
         {
             formKompleksni.ShowDialog();
+        }
+
+        private void buttonVeliki_Click(object sender, EventArgs e)
+        {
+            formVeliki.ShowDialog();
         }
     }
 }
