@@ -68,7 +68,6 @@ namespace kalkulatori__rimski__imaginarni__veliki_
 
         static string Zbir(string s1, string s2)
         {
-
             int i;
 
             List<int> Celi1 = new List<int>();
@@ -76,34 +75,48 @@ namespace kalkulatori__rimski__imaginarni__veliki_
             List<int> Deci1 = new List<int>();
             List<int> Deci2 = new List<int>();
 
-            for (i = s1.Length - 1; i > -1; i--)
+            int s1decIndex = s1.IndexOf('.');
+            if (s1decIndex != -1)
             {
-                if (s1[i] == '.')
+                for (i = s1decIndex - 1; i > -1; i--)
                 {
-                    break;
+                    Deci1.Add(s1[i] - '0');
                 }
-                Deci1.Add(s1[i] - '0');
-            }
 
-            i--;
-            for (; i > -1; i--)
-            {
-                Celi1.Add(s1[i] - '0');
-            }
-
-            for (i = s2.Length - 1; i > -1; i--)
-            {
-                if (s2[i] == '.')
+                i--;
+                for (; i > -1; i--)
                 {
-                    break;
+                    Celi1.Add(s1[i] - '0');
                 }
-                Deci2.Add(s2[i] - '0');
+            }
+            else
+            {
+                for (i = s1.Length - 1; i > -1; i--)
+                {
+                    Celi1.Add(s1[i] - '0');
+                }
             }
 
-            i--;
-            for (; i > -1; i--)
+            int s2decIndex = s2.IndexOf('.');
+            if (s2decIndex != -1)
             {
-                Celi2.Add(s2[i] - '0');
+                for (i = s2decIndex - 1; i > -1; i--)
+                {
+                    Deci2.Add(s2[i] - '0');
+                }
+
+                i--;
+                for (; i > -1; i--)
+                {
+                    Celi2.Add(s2[i] - '0');
+                }
+            }
+            else
+            {
+                for (i = s2.Length - 1; i > -1; i--)
+                {
+                    Celi2.Add(s2[i] - '0');
+                }
             }
 
             List<int>[] rez1 = IstiNapred(Deci1, Deci2);
@@ -147,12 +160,72 @@ namespace kalkulatori__rimski__imaginarni__veliki_
 
             string celi = string.Join(string.Empty, Celi1);
             string decimalni = string.Join(string.Empty, Deci1);
-            return celi + '.' + decimalni;
+            if (decimalni.Length > 0)
+            {
+                return celi + '.' + decimalni;
+            }
+            else
+            {
+                return celi;
+            }
+        }
+
+        static string Razlika(string s1, string s2)
+        {
+            int i;
+
+            List<int> Celi1 = new List<int>();
+            List<int> Celi2 = new List<int>();
+            List<int> Deci1 = new List<int>();
+            List<int> Deci2 = new List<int>();
+
+            for (i = s1.Length - 1; i > -1; i--)
+            {
+                Celi1.Add(s1[i] - '0');
+            }
+
+            for (i = s2.Length - 1; i > -1; i--)
+            {
+                Celi2.Add(s2[i] - '0');
+            }
+
+            List<int>[] rez1 = IstiNapred(Deci1, Deci2);
+            List<int>[] rez2 = IstiNazad(Celi1, Celi2);
+            Deci1 = rez1[0];
+            Deci2 = rez1[1];
+            Celi1 = rez2[0];
+            Celi2 = rez2[1];
+
+            int N = Celi1.Count;
+            int M = Celi2.Count;
+            i = 0;
+            int ostatak = 0;
+
+            while (i < N && i < M)
+            {
+                if ((Celi1[i] - Celi2[i] + ostatak) < 0)
+                {
+                    Celi1[i] = 10 + (Celi1[i] - Celi2[i] + ostatak);
+                    ostatak = -1;
+                }
+                else
+                {
+                    Celi1[i] = (Celi1[i] - Celi2[i]) + ostatak;
+                }
+                i++;
+            }
+            Celi1.Reverse();
+            return string.Join(string.Empty, Celi1);
         }
 
         private void buttonPlus_Click(object sender, EventArgs e)
         {
             textBoxRezultat.Text = Zbir(textBoxPrvi.Text, textBoxDrugi.Text);
+        }
+
+        private void buttonMinus_Click(object sender, EventArgs e)
+        {
+            textBoxRezultat.Text = Razlika(textBoxPrvi.Text, textBoxDrugi.Text);
         }
     }
 }

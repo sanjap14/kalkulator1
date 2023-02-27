@@ -32,6 +32,7 @@
             this.textBoxRezultat = new System.Windows.Forms.TextBox();
             this.textBoxDrugi = new System.Windows.Forms.TextBox();
             this.buttonPlus = new System.Windows.Forms.Button();
+            this.buttonMinus = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxPrvi
@@ -65,11 +66,22 @@
             this.buttonPlus.UseVisualStyleBackColor = true;
             this.buttonPlus.Click += new System.EventHandler(this.buttonPlus_Click);
             // 
+            // buttonMinus
+            // 
+            this.buttonMinus.Location = new System.Drawing.Point(278, 205);
+            this.buttonMinus.Name = "buttonMinus";
+            this.buttonMinus.Size = new System.Drawing.Size(76, 55);
+            this.buttonMinus.TabIndex = 4;
+            this.buttonMinus.Text = "button1";
+            this.buttonMinus.UseVisualStyleBackColor = true;
+            this.buttonMinus.Click += new System.EventHandler(this.buttonMinus_Click);
+            // 
             // FormVeliki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonMinus);
             this.Controls.Add(this.buttonPlus);
             this.Controls.Add(this.textBoxDrugi);
             this.Controls.Add(this.textBoxRezultat);
@@ -87,5 +99,6 @@
         private System.Windows.Forms.TextBox textBoxRezultat;
         private System.Windows.Forms.TextBox textBoxDrugi;
         private System.Windows.Forms.Button buttonPlus;
+        private System.Windows.Forms.Button buttonMinus;
     }
 }
