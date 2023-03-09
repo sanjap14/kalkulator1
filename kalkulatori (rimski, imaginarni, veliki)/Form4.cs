@@ -231,21 +231,6 @@ namespace kalkulatori__rimski__imaginarni__veliki_
             i = 0;
             
 
-            while (i < N && i < M)
-            {
-                if ((Celi1[i] - Celi2[i] + ostatak) < 0)
-                {
-                    Celi1[i] = 10 + (Celi1[i] - Celi2[i] + ostatak);
-                    ostatak = -1;
-                }
-                else
-                {
-                    Celi1[i] = (Celi1[i] - Celi2[i]) + ostatak;
-                    ostatak = 0;
-                }
-                i++;
-            }
-
             //prenesi ostatak
             //if (ostatak != 0)
             //    Celi1.Add(ostatak);
