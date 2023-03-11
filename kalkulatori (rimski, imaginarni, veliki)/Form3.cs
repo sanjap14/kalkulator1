@@ -17,7 +17,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
     {
         class Kompleksni
         {
-            public int imaginarniDeo, realniDeo, realniDeoStari;
+            public double imaginarniDeo, realniDeo, realniDeoStari;
         }
         Kompleksni broj = new Kompleksni();
 
@@ -61,6 +61,11 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 textBoxKompleksni.Text = "*(";
                 CursorNaKraj();
             }
+            else if (e.KeyCode == Keys.Divide && (textBoxKompleksni.Text.EndsWith("i)/")))
+            {
+                textBoxKompleksni.Text = "/(";
+                CursorNaKraj();
+            }
         }
 
         private void RegexRealniImaginarni(string text)
@@ -86,6 +91,17 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 {
                     broj.realniDeo = broj.realniDeo * Convert.ToInt16(matchRealni.Value) - broj.imaginarniDeo * Convert.ToInt16(matchImaginarni.Value); 
                 }
+                else if(text.StartsWith("/("))
+                {
+                    if (Convert.ToInt16(matchRealni.Value) == 0 && Convert.ToInt16(matchImaginarni.Value) == 0)
+                    {
+                        MessageBox.Show("nedefinisano");
+                    }
+                    else
+                    {
+                        broj.realniDeo = (broj.realniDeo * Convert.ToInt16(matchRealni.Value) + broj.imaginarniDeo * Convert.ToInt16(matchImaginarni.Value)) / (Math.Pow(Convert.ToInt16(matchRealni.Value), 2) + Math.Pow(Convert.ToInt16(matchImaginarni.Value), 2));
+                    }  
+                }
             }
             catch (System.FormatException) { }
 
@@ -103,6 +119,13 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 else if (text.StartsWith("*("))
                 {
                     broj.imaginarniDeo = broj.realniDeoStari * Convert.ToInt16(matchImaginarni.Value) + broj.imaginarniDeo * Convert.ToInt16(matchRealni.Value);    
+                }
+                else if(text.StartsWith("/("))
+                {
+                    if (Convert.ToInt16(matchRealni.Value) != 0 && Convert.ToInt16(matchImaginarni.Value) != 0)
+                    {
+                        broj.imaginarniDeo = (broj.imaginarniDeo * Convert.ToInt16(matchRealni.Value) - broj.realniDeoStari * Convert.ToInt16(matchImaginarni.Value)) / (Math.Pow(Convert.ToInt16(matchRealni.Value), 2) + Math.Pow(Convert.ToInt16(matchImaginarni.Value), 2));
+                    }
                 }
             }
             catch (System.FormatException)
