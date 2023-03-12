@@ -155,7 +155,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
             }
             else
             {
-                MessageBox.Show("ovaj broj ne postoji ili je > 4000");
+                textBoxrezultat.Text ="BROJ NE POSTOJI";
             }
         }
         private void StaviUNizEnter()
@@ -172,7 +172,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
             }
             else
             {
-                MessageBox.Show("ovaj broj ne postoji ili je > 4000");
+                textBoxrezultat.Text = "BROJ NE POSTOJI";
             }
         }
         private void IzracunajNiz(string[] niz)
@@ -185,11 +185,11 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 double rezultatD = Convert.ToDouble(rezultat);
                 if (rezultatD < 0)
                 {
-                    MessageBox.Show("broj je manji od nule");
+                    textBoxrezultat.Text = "BROJ JE MANJI OD NULE";
                 }
                 else
                 {
-                    MessageBox.Show(rezultat);
+                    textBoxrezultat.Text = rezultat;
                 }
                 Math.Round(Convert.ToDouble(rezultat));
                 ResetujKalkulator();

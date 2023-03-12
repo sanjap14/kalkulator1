@@ -28,38 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonEnter = new System.Windows.Forms.Button();
             this.textBoxKompleksni = new System.Windows.Forms.TextBox();
+            this.textBoxKomp = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // buttonEnter
-            // 
-            this.buttonEnter.Location = new System.Drawing.Point(446, 281);
-            this.buttonEnter.Name = "buttonEnter";
-            this.buttonEnter.Size = new System.Drawing.Size(97, 29);
-            this.buttonEnter.TabIndex = 9;
-            this.buttonEnter.Text = "button1";
-            this.buttonEnter.UseVisualStyleBackColor = true;
-            this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
             // 
             // textBoxKompleksni
             // 
             this.textBoxKompleksni.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxKompleksni.Location = new System.Drawing.Point(195, 65);
+            this.textBoxKompleksni.Location = new System.Drawing.Point(112, 142);
+            this.textBoxKompleksni.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBoxKompleksni.Name = "textBoxKompleksni";
-            this.textBoxKompleksni.Size = new System.Drawing.Size(585, 35);
+            this.textBoxKompleksni.Size = new System.Drawing.Size(850, 41);
             this.textBoxKompleksni.TabIndex = 17;
             this.textBoxKompleksni.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxKompleksni_MouseClick);
             this.textBoxKompleksni.TextChanged += new System.EventHandler(this.textBoxKompleksni_TextChanged);
             this.textBoxKompleksni.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxKompleksni_KeyUp_1);
             // 
+            // textBoxKomp
+            // 
+            this.textBoxKomp.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxKomp.Location = new System.Drawing.Point(393, 303);
+            this.textBoxKomp.Name = "textBoxKomp";
+            this.textBoxKomp.Size = new System.Drawing.Size(468, 36);
+            this.textBoxKomp.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(183, 306);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(150, 29);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "REZULTAT";
+            // 
             // FormKompleksni
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 361);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ClientSize = new System.Drawing.Size(1132, 555);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxKomp);
             this.Controls.Add(this.textBoxKompleksni);
-            this.Controls.Add(this.buttonEnter);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "FormKompleksni";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.FormKompleksni_Load);
@@ -70,7 +85,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonEnter;
         private System.Windows.Forms.TextBox textBoxKompleksni;
+        private System.Windows.Forms.TextBox textBoxKomp;
+        private System.Windows.Forms.Label label1;
     }
 }

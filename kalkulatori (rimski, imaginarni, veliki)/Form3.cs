@@ -44,7 +44,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 RegexRealniImaginarni(textBoxKompleksni.Text);
                 textBoxKompleksni.Text += ')';                
                 CursorNaKraj();
-                MessageBox.Show(broj.realniDeo.ToString() + "\n" + broj.imaginarniDeo.ToString());      
+                textBoxKomp.Text = broj.realniDeo.ToString() + "  " + broj.imaginarniDeo.ToString() + "i";      
             }
             if (e.KeyCode == Keys.OemMinus && (textBoxKompleksni.Text.EndsWith("i)-")))
             {
@@ -95,7 +95,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 {
                     if (Convert.ToInt16(matchRealni.Value) == 0 && Convert.ToInt16(matchImaginarni.Value) == 0)
                     {
-                        MessageBox.Show("nedefinisano");
+                        textBoxKomp.Text = "nedefinisano";
                     }
                     else
                     {
