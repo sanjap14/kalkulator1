@@ -193,7 +193,7 @@ namespace kalkulatori__rimski__imaginarni__veliki_
                 }
                 Math.Round(Convert.ToDouble(rezultat));
                 ResetujKalkulator();
-                textBoxRimski.Text += IntURimski(Convert.ToInt16(rezultatD));
+                //textBoxRimski.Text += IntURimski(Convert.ToInt16(rezultatD));
             }
             catch(Exception ex)
             {
@@ -205,6 +205,11 @@ namespace kalkulatori__rimski__imaginarni__veliki_
         {
             Array.Clear(niz, 0, niz.Length); brojac = 0;
             textBoxRimski.Text = " ";
+        }
+
+        private void textBoxRimski_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
